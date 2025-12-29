@@ -92,19 +92,38 @@ Python-Flask-Share/
 └── venv/                       <-- Python 虚拟环境 (需要自己创建)
 ```
 
-## ⚙️ 个性化配置
+### **⚙️ 个性化与自定义指南**
 
-可以通过修改以下文件中的配置来自定义服务器：
+您可以轻松修改以下变量来定制您的服务器，无需深入代码。
 
-| 功能            | 所在文件          | 配置位置 |
-| :-------------- | :---------------- | :------- |
-| 默认共享目录     | `启动器.bat`      | `SHARE_FOLDER_DEFAULT` |
-| 默认端口        | `启动器.bat`      | `PORT_DEFAULT` |
-| 默认密码        | `启动器.bat`      | `PASSWORD_DEFAULT` |
-| 登录有效期      | `server.py`       | `app.permanent_session_lifetime` |
-| 会话安全密钥    | `server.py`       | `app.secret_key` |
-| UI 主题颜色     | `templates/index.html` | `:root` 中的 `--primary-color` |
-| UI 背景颜色     | `templates/index.html` | `:root` 中的 `--background-color` |
+| 功能            | 所在文件          | 如何修改                                                                  | 描述                                                                                                             |
+| :-------------- | :---------------- | :------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------- |
+| **默认共享目录**  | `启动器.bat`      | 修改 `set "SHARE_FOLDER_DEFAULT=..."` 的值为您的路径，如 `D:\Downloads`。 | 启动器在不输入任何内容时，默认使用的共享文件夹路径。                                                               |
+| **默认端口**      | `启动器.bat`      | 修改 `set "PORT_DEFAULT=5000"` 的值为您想要的端口，如 `8888`。                | 服务器运行时监听的网络端口。                                                                                     |
+| **默认密码**      | `启动器.bat`      | 修改 `set "PASSWORD_DEFAULT=..."` 的值为您的密码，如 `admin`。留空则默认无密码。 | 启动器在不输入任何内容时，默认设置的访问密码。                                                                   |
+| **登录有效期**    | `server.py`       | 修改 `app.permanent_session_lifetime = datetime.timedelta(days=7)` 的天数。 | 用户登录一次后，保持登录状态的时间。                                                                             |
+| **会话安全密钥**  | `server.py`       | 修改 `app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'` 为任意复杂的字节字符串。      | 用于加密用户会话信息，更改它可以让旧的登录凭证失效。                                                             |
+| **UI 主题颜色**   | `templates/index.html` | 在 `<style>` 标签内，修改 `:root` 中的 `--primary-color` 的值，如 `#ff6347`。 | 控制界面中所有链接、按钮和图标的主要颜色。                                                                       |
+| **UI 背景颜色**   | `templates/index.html` | 在 `<style>` 标签内，修改 `:root` 中的 `--background-color` 的值，如 `#ffffff`。 | 控制页面的主要背景色。                                                                                           |
+| **UI 文件夹颜色** | `templates/index.html` | 在 `<style>` 标签内，修改 `:root` 中的 `--folder-icon-color` 的值。       | 单独控制文件夹图标的颜色。                                                                                       |
+| **UI 文件颜色**   | `templates/index.html` | 在 `<style>` 标签内，修改 `:root` 中的 `--file-icon-color` 的值。         | 单独控制文件图标的颜色。                                                                                         |
+
+---
+## 🔗离线静态资源开放地址
+
+这是确保服务器**完全离线**运行的关键。以下文件需放入 `static` 文件夹内（项目内已包含）。
+*   **Feather Icons**:
+    *   下载地址: `https://unpkg.com/feather-icons`
+    *   文件 `dist/feather.min.js` -> 放入: `static/js/feather.min.js`
+*   **FancyBox**:
+    *   下载地址: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/`
+    *   文件 `fancybox.umd.js` -> 放入 `static/js/`
+    *   文件 `fancybox.css` -> 放入 `static/css/`
+*   **Dropzone**:
+    *   下载地址: `https://unpkg.com/dropzone@5/dist/min/`
+    *   文件 `dropzone.min.js` -> 放入 `static/js/`
+    *   文件 `dropzone.min.css` -> 放入 `static/css/`
+---
 
 ## 📝 使用说明
 
